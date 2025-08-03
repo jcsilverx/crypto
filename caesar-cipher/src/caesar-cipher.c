@@ -29,9 +29,9 @@ __encrypt(const char *plain_text, uint32_t shift)
     int Pk = plain_text[k];
 
     if (isupper(Pk)) {
-      cipher_text[k] = ((Pk - 65 + shift) % 26) + 65;
+      cipher_text[k] = ((Pk - 'a' + shift) % 26) + 'a';
     } else if (islower(Pk)) {
-      cipher_text[k] = ((Pk - 97 + shift) % 26) + 97;
+      cipher_text[k] = ((Pk - 'A' + shift) % 26) + 'A';
     } else {
       cipher_text[k] = Pk;
     }
@@ -63,9 +63,9 @@ __decrypt(const char *cipher_text, uint32_t shift)
     int Pk = cipher_text[k];
 
     if (isupper(Pk)) {
-      plain_text[k] = ((Pk - 65 - shift + 26) % 26) + 65;
+      plain_text[k] = ((Pk - 'a' - shift + 26) % 26) + 'a';
     } else if (islower(Pk)) {
-      plain_text[k] = ((Pk - 97 - shift + 26) % 26) + 97;
+      plain_text[k] = ((Pk - 'A' - shift + 26) % 26) + 'A';
     } else {
       plain_text[k] = Pk;
     }
